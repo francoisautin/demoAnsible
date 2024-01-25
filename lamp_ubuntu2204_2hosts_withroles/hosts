@@ -1,18 +1,18 @@
 [webservers]
-192.168.56.141 
+148.60.11.62
 [dbservers]
-192.168.56.142
+148.60.11.43
 
 [webservers:vars]
 ansible_connection=ssh
-ansible_ssh_user=vagrant
-ansible_ssh_pass=vagrant
-ansible_become_pass=vagrant
+ansible_ssh_user=zprojet
+ansible_ssh_pass=tp_ansible_pass
+ansible_become_pass=tp_ansible_pass
 ansible_python_interpreter=/usr/bin/python3
 
 [dbservers:vars]
 ansible_connection=ssh
-ansible_ssh_user=vagrant
-ansible_ssh_pass=vagrant
-ansible_become_pass=vagrant
+ansible_ssh_user=zprojet
+ansible_ssh_pass=tp_ansible_pass
+ansible_become_pass=tp_ansible_pass
 ansible_python_interpreter=/usr/bin/python3

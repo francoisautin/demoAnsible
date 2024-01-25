@@ -35,12 +35,12 @@
     enabled: yes
 
 - name: Sets the root password
-  no_log: true
+  no_log: false
   mysql_user:
     name: root
     password: "{{ mysql_root_password }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
-  ignore_errors: yes
+  ignore_errors: no
 
 
 #- name: Removes all anonymous user accounts
