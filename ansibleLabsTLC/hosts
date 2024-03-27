@@ -1,0 +1,9 @@
+[microk8sserver]
+148.60.11.62
+
+[microk8sserver:vars]
+ansible_connection=ssh
+ansible_ssh_user=zprojet
+ansible_ssh_pass=tp_ansible_pass
+ansible_become_pass=tp_ansible_pass
+ansible_python_interpreter=/usr/bin/python3

@@ -1,0 +1,11 @@
+---
+# This playbook deploys, starts, and configures microk8s on a VM
+
+- hosts: all
+  become: true
+  remote_user: zprojet
+  vars_files:
+    - vars/default.yml
+
+  roles:
+    - k8s

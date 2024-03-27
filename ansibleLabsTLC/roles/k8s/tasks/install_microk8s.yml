@@ -1,0 +1,31 @@
+---
+# These tasks install microk8s
+
+- name: Install docker
+  ansible.builtin.apt:
+    name: docker.io
+    state: present
+
+- name: Start docker daemon
+  ansible.builtin.systemd_service:
+    state: restarted
+    name: docker
+
+- name: Install microk8s
+  community.general.snap:
+    name: microk8s
+    classic: true
+    channel: 1.25
+
+- name: Adding user to microk8s group
+  ansible.builtin.user:
+    name: zprojet
+    groups: microk8s
+    append: true
+
+- name: Chown ~/.kube
+  ansible.builtin.file:
+    path: /home/zprojet/.kube
+    state: directory
+    recurse: yes
+    owner: zprojet

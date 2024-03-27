@@ -1,0 +1,21 @@
+---
+# These tasks make it so we trust local insecure registry
+
+- name: Checking that /etc/docker/daemon.json exists
+  ansible.builtin.stat:
+    path: /etc/docker/daemon.json
+  register: stat_result
+
+- block:
+    - name: Adding registry in file
+      ansible.builtin.lineinfile:
+        path: /etc/docker/daemon.json
+        line: '{ "insecure-registries": ["localhost:32000"] }'
+        create: yes
+  when: stat_result.stat.exists == false
+
+- name: Restarting docker daemon
+  ansible.builtin.systemd_service:
+    state: restarted
+    daemon_reload: true
+    name: docker

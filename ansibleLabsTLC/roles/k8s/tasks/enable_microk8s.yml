@@ -1,0 +1,17 @@
+---
+# These taks start microk8s and enable relevant services
+
+- name: Start microk8s
+  ansible.builtin.command: microk8s start
+
+- name: Wait for microk8s to be ready
+  ansible.builtin.command: microk8s status --wait-ready
+
+- name: Enable dns storage
+  ansible.builtin.command: microk8s enable dns storage
+
+- name: Enable ingress dashboard
+  ansible.builtin.command: microk8s enable dashboard ingress
+
+- name: Enable registry
+  ansible.builtin.command: microk8s enable registry
